@@ -1,0 +1,35 @@
+<div>
+    <h2>SignUp</h2>
+    <h4>It's quick and easy.</h4>
+    <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+        <div class="form-group row">
+            <input type="text" class="form-control col" formControlName="FirstName" placeholder="First Name"/>
+            <label class="text-danger" *ngIf="service.formModel.get('FirstName').touched && service.formModel.get('FirstName').errors?.required">
+                This field is mandatory.
+            </label>
+            <input type="text" class="form-control col" formControlName="SecondName" placeholder="Last Name"/>
+        </div>
+        <input type="text" class="form-control row" formControlName="Email" placeholder="Email or Mobile Number"/>
+        <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email">
+            Invalid email adress.
+        </label>
+        <input type="password" class="form-control row" formControlName="Password" placeholder="New Password"/>
+        <label class="text-danger" *ngIf="service.formModel.get('Password').touched && service.formModel.get('Password').errors?.required">
+            This field is mandatory.
+        </label>
+        <label class="text-danger" *ngIf="service.formModel.get('Password').touched && service.formModel.get('Password').errors?.minlength">
+            Minimum 6 characters required.
+        </label>
+    <h6 class="text-secondary">Birthday</h6>
+        <div class="form-inline">
+            <select class="form-control"></select>
+            <select class="form-control"></select>
+            <select class="form-control"></select>
+        </div>
+    <h6 class="text-secondary">Gender</h6>
+        <div class="form-inline">
+            <input type="radio" class="form-control"/>
+        </div>
+    <button class="btn-success" type="submit" [disabled]="!service.formModel.valid">SignUp</button>
+</form>
+</div>
