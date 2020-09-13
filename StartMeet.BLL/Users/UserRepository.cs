@@ -1,9 +1,17 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using StartMeet.BLL.Configure;
+using StartMeet.BLL.Users.Helpers;
 using StartMeet.Model.Users;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StartMeet.BLL.Users
@@ -12,11 +20,14 @@ namespace StartMeet.BLL.Users
     {
         private UserManager<AppUser> _userManager;
         private SignInManager<AppUser> _signInManager;
+        private readonly IUserGenerateToken _userTokenGenerator;
 
-        public UserRepository(UserManager<AppUser> userManager , SignInManager<AppUser> signInManager)
+        public UserRepository(UserManager<AppUser> userManager , SignInManager<AppUser> signInManager
+            ,IUserGenerateToken userTokenGenerator)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _userTokenGenerator = userTokenGenerator;
         }
             
 
@@ -39,19 +50,6 @@ namespace StartMeet.BLL.Users
             return _userManager.Users;
         }
 
-        public async Task<SignInResult> Login(LoginModel details, string returnUrl)
-        {
-            AppUser user = await _userManager.FindByEmailAsync(details.Email);
-            if(user!=null)
-            {
-                await _signInManager.SignOutAsync();
-                SignInResult result = await _signInManager.PasswordSignInAsync(
-                    user, details.Password, false, false);
-
-                return result;
-            }
-            return null;
-        }
 
         public async Task<IdentityResult> Registration(RegistrationModel model)
         {
@@ -65,6 +63,15 @@ namespace StartMeet.BLL.Users
             IdentityResult result = await _userManager.CreateAsync(user , model.Password);
 
             return result;
+        }
+
+        public async Task<AppUser> Login(LoginModel model)
+        {
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if(await _userManager.CheckPasswordAsync(user, model.Password))
+                return user;
+
+            return null;
         }
     }
 }

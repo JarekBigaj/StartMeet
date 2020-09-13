@@ -7,9 +7,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.7" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.7.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\StartMeet.DAL\StartMeet.DAL.csproj" />
     <ProjectReference Include="..\StartMeet.Model\StartMeet.Model.csproj" />
   </ItemGroup>
 
