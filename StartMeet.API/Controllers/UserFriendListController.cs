@@ -15,13 +15,5 @@ namespace StartMeet.API.Controllers
         private IUserRepository<AppUser> _userRepository;
         public UserFriendListController(IUserRepository<AppUser> userRepository) => _userRepository = userRepository;
 
-        [HttpGet]
-        [Route("")]
-        //GET: api/User/UserFreindList
-        public IActionResult Get()
-        {
-            IEnumerable<AppUser> appUsers = _userRepository.GetAll();
-            return new JsonResult(appUsers);
-        }
     }
 }

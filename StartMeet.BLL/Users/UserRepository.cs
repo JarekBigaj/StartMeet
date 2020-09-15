@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -45,12 +46,6 @@ namespace StartMeet.BLL.Users
             
         }
 
-        public IEnumerable<AppUser> GetAll()
-        {
-            return _userManager.Users;
-        }
-
-
         public async Task<IdentityResult> Registration(RegistrationModel model)
         {
             AppUser user = new AppUser
@@ -72,6 +67,17 @@ namespace StartMeet.BLL.Users
                 return user;
 
             return null;
+        }
+
+        public async Task<Object> GetUser(string userId)
+        {
+            string _userId = userId;
+            var user = await _userManager.FindByIdAsync(_userId);
+            return new
+            {
+                user.UserName,
+                user.SecondName
+            };
         }
     }
 }

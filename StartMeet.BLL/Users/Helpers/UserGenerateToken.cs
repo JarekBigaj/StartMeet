@@ -24,14 +24,14 @@ namespace StartMeet.BLL.Users.Helpers
         }
         public UserToken Generate(string userEmail)
         {
-            var userId = _getUserIdByUserEmailQuery;
+            var userId = _getUserIdByUserEmailQuery.Get(userEmail);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                     {
                         new Claim("UserID", userId.ToString())
                     }),
-                Expires = DateTime.UtcNow.AddMinutes(5),
+                Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = new SigningCredentials(
                         new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_applicationSettings.JWT_Secret)),
                         SecurityAlgorithms.HmacSha256Signature)
