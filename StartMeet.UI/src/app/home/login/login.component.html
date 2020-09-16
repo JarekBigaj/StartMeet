@@ -9,13 +9,13 @@
     </div>
     <form #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
         <div class="row">
-            <div class="column">
-                <input #Email="ngModel" name="Email" [(ngModel)]="formModel.Email" type="text">
+            <div class="column form-group">
+                <input class="form-control" #Email="ngModel" name="Email" [(ngModel)]="formModel.Email" type="text">
             </div>
-            <div class="column">
-                <input #Password="ngModel" name="Password" [(ngModel)]="formModel.Password" type="password">
+            <div class="column form-group">
+                <input class="form-control" #Password="ngModel" name="Password" [(ngModel)]="formModel.Password" type="password">
             </div>
-            <div class="column">
+            <div class="column form-group">
                 <button class="btn btn-info btn-sm" type="submit">LogIn</button>
             </div>
         </div>
