@@ -27,4 +27,8 @@ export class UserAuthenticationService {
     };
     return this.http.post(this.BaseURI+'/Home/Register',body);
   }
+
+  login(formData){
+    return this.http.post(this.BaseURI+'/Home/Login',formData);
+  }
 }

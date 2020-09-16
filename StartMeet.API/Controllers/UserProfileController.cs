@@ -14,23 +14,17 @@ namespace StartMeet.API.Controllers
     [ApiController]
     public class UserProfileController : ControllerBase
     {
-        private UserManager<AppUser> _userManager;
-        public UserProfileController(UserManager<AppUser> userManager)
+        private IUserRepository<AppUser> _userRepository;
+        public UserProfileController(IUserRepository<AppUser> userRepository)
         {
-            _userManager = userManager;
+            _userRepository = userRepository;
         }
         [HttpGet]
         [Authorize]
         //GET : /api/UserProfile
         public async Task<Object> GetUserProfile() 
         {
-            string userId = User.Claims.First(c => c.Type == "UserID").Value;
-            var user = await _userManager.FindByIdAsync(userId);
-            return new
-            {
-                user.UserName,
-                user.Email
-            };
+            return await _userRepository.GetUser(User);
         }
     }
 }

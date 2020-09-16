@@ -12,6 +12,8 @@ import { RegistrationComponent } from './home/registration/registration.componen
 import { LoginComponent } from './home/login/login.component';
 import { DescriptionComponent } from './home/description/description.component';
 import { UserAuthenticationService } from "./home/shared/user-authentication.service";
+import { UserPageComponent } from './user-page/user-page.component';
+import { NavigationBarComponent } from './user-page/navigation-bar/navigation-bar.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { UserAuthenticationService } from "./home/shared/user-authentication.ser
     HomeComponent,
     RegistrationComponent,
     LoginComponent,
-    DescriptionComponent
+    DescriptionComponent,
+    UserPageComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,

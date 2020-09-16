@@ -69,10 +69,10 @@ namespace StartMeet.BLL.Users
             return null;
         }
 
-        public async Task<Object> GetUser(string userId)
+        public async Task<Object> GetUser(ClaimsPrincipal User)
         {
-            string _userId = userId;
-            var user = await _userManager.FindByIdAsync(_userId);
+            string userId = User.Claims.First(c => c.Type == "UserID").Value;
+            var user = await _userManager.FindByIdAsync(userId);
             return new
             {
                 user.UserName,

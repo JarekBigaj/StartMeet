@@ -7,17 +7,19 @@
             <small>Password</small>
         </div>
     </div>
-    <div class="row">
-        <div class="column">
-            <input #Email="ngModel" name="Email" [(ngModel)]="formModel.Email" type="text">
+    <form #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
+        <div class="row">
+            <div class="column">
+                <input #Email="ngModel" name="Email" [(ngModel)]="formModel.Email" type="text">
+            </div>
+            <div class="column">
+                <input #Password="ngModel" name="Password" [(ngModel)]="formModel.Password" type="password">
+            </div>
+            <div class="column">
+                <button class="btn btn-info btn-sm" type="submit">LogIn</button>
+            </div>
         </div>
-        <div class="column">
-            <input #Password="ngModel" name="Password" [(ngModel)]="formModel.Password" type="password">
-        </div>
-        <div class="column">
-            <button class="btn btn-info btn-sm" type="submit">LogIn</button>
-        </div>
-    </div>
+    </form>
     <div class="row">
         <a href="#"><small class="text-light">Forgot account?</small></a>
     </div>
