@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule , FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -14,6 +14,8 @@ import { DescriptionComponent } from './home/description/description.component';
 import { UserAuthenticationService } from "./home/shared/user-authentication.service";
 import { UserPageComponent } from './user-page/user-page.component';
 import { NavigationBarComponent } from './user-page/navigation-bar/navigation-bar.component';
+import { UserService } from './user-page/shared/user.service';
+import { AuthInterceptor } from "./auth/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,12 @@ import { NavigationBarComponent } from './user-page/navigation-bar/navigation-ba
     ToastrModule.forRoot(),
     FormsModule
   ],
-  providers: [UserAuthenticationService],
+  providers: [UserAuthenticationService, UserService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
