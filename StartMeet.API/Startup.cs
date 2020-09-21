@@ -1,5 +1,6 @@
 using System;
 using System.Text;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using StartMeet.BLL.Configure;
+using StartMeet.BLL.Filters;
 using StartMeet.BLL.Users;
 using StartMeet.BLL.Users.Helpers;
 using StartMeet.BLL.Users.Queries;
@@ -46,7 +48,9 @@ namespace StartMeet.API
             services.AddTransient<IUserRepository<AppUser>, UserRepository>();
             services.AddTransient<IGetUserIdByUserEmailQuery, GetUserIdByUserEmailQuery>();
             services.AddTransient<IUserGenerateToken, UserGenerateToken>();
-            services.AddMvc();
+
+            services.AddMvc(options => options.Filters.Add<ValidationFilter>())
+                .AddFluentValidation(mvcConfiguration => mvcConfiguration.RegisterValidatorsFromAssemblyContaining<Startup>());
 
             services.AddCors();
 

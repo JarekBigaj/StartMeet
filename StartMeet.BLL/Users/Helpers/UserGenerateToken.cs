@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder.Internal;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using StartMeet.BLL.Configure;
 using StartMeet.BLL.Users.Queries;
