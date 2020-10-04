@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand row">
     <ul class="navbar-nav column col-4" >
         <li class="nav-item">
-            <a [routerLink]="['/UserPage']" class="nav-link">StartMeet</a>
+            <a routerLink="/userpage" class="nav-link">StartMeet</a>
         </li>
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="text" placeholder="Search"/>
@@ -9,15 +9,15 @@
     </ul>
     <ul class="navbar-nav column col-6">
         <li class="nav-item">
-            <a [routerLink]="['/UserPage']" class="nav-link">Home</a>
+            <a routerLink="/userpage" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-            <a [routerLink]="['/UserPage/FriendList']" class="nav-link">Friends</a>
+            <a routerLink="/userpage/FriendList" class="nav-link">Friends</a>
         </li>
     </ul>
     <ul class="navbar-nav column col-1">
-        <li class="nav-item">
-            <a [routerLink]="['/UserPage/UserBoard']" class="nav-link">User</a>
+        <li class="nav-item" *ngIf="userDetails">
+            <a routerLink="/userpage" class="nav-link"> {{userDetails.userName}} {{userDetails.secondName}}  </a>
         </li>
     </ul>
 
@@ -26,7 +26,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="dropdown-menu dropdown-menu-right" id="dropdownListNavbar">
-            <a class="dropdown-item">Settings</a>
+            <a class="dropdown-item nav-link" routerLink="/userpage/UserSettings">Settings</a>
             <a class="dropdown-item btn btn-danger" (click)="onLogOut()">Log Out</a>
         </div>
     </div>

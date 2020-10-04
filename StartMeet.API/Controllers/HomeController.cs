@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using StartMeet.BLL.Users;
-using StartMeet.BLL.Users.Helpers;
 using StartMeet.Model.Users;
 using System;
 using System.Threading.Tasks;

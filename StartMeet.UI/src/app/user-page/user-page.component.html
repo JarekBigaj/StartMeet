@@ -1,4 +1,7 @@
 <app-navigation-bar></app-navigation-bar>
+<div class="outer-outlet">
+    <router-outlet></router-outlet>
+</div>
 <div class="card m-5" style="width: 18rem" *ngIf="userDetails">
     <ul class="list-group">
         <li class="list-group-item"><strong>UserName :</strong> {{userDetails.userName}} </li>

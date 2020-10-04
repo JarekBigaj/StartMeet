@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -8,9 +9,19 @@ import { Router } from '@angular/router';
 })
 export class NavigationBarComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  userDetails;
+
+  constructor(private router:Router , private service:UserService ) { }
 
   ngOnInit(): void {
+    this.service.getUserProfile().subscribe(
+      res => {
+        this.userDetails = res;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   onLogOut(){

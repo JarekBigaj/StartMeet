@@ -16,6 +16,9 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { NavigationBarComponent } from './user-page/navigation-bar/navigation-bar.component';
 import { UserService } from './user-page/shared/user.service';
 import { AuthInterceptor } from "./auth/auth.interceptor";
+import { UserSettingsComponent } from './user-page/user-settings/user-settings.component';
+import { SettingsListComponent } from './user-page/user-settings/settings-list/settings-list.component';
+import { UserPropertiesListComponent } from './user-page/user-settings/user-properties-list/user-properties-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { AuthInterceptor } from "./auth/auth.interceptor";
     LoginComponent,
     DescriptionComponent,
     UserPageComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    UserSettingsComponent,
+    SettingsListComponent,
+    UserPropertiesListComponent
   ],
   imports: [
     BrowserModule,

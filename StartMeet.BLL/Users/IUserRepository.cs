@@ -15,6 +15,8 @@ namespace StartMeet.BLL.Users
         Task<IdentityResult> DeleteAccount(string id);
         Task<Object> Login(LoginModel model);
         Task<Object> Edit(string id);
-        Task<Object> Edit(string id,string email, string password);
+        Task<Object> Edit(string id,EditUserModel model);
+        string GetLoggedUserId(ClaimsPrincipal user);
+
     }
 }

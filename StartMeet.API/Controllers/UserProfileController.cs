@@ -30,10 +30,9 @@ namespace StartMeet.API.Controllers
         [Authorize]
         [Route("Edit")]
         //POST : /api/UserProfile/Edit
-        public async Task<Object> Edit(string id, string email, string password)
+        public async Task<Object> Edit(EditUserModel model)
         {
-            var user = _userRepository.GetUser(User);
-            return await  _userRepository.Edit(user.Id.ToString(), email, password);
+            return await _userRepository.Edit(_userRepository.GetLoggedUserId(User),model);
         }
 
 

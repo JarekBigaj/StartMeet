@@ -77,7 +77,8 @@ namespace StartMeet.BLL.Users
             return new
             {
                 user.UserName,
-                user.SecondName
+                user.SecondName,
+                user.Email
             };
         }
 
@@ -90,15 +91,15 @@ namespace StartMeet.BLL.Users
                 return new BadRequestObjectResult(new {message = "No User" });
         }
 
-        public async Task<Object> Edit(string id ,string email,string password)
+        public async Task<Object> Edit(string id ,EditUserModel model)
         {
             AppUser user = await _userManager.FindByIdAsync(id);
             if(user != null)
             {
-                user.Email = email;
-                if(!string.IsNullOrEmpty(password))
+                user.Email = model.Email;
+                if(!string.IsNullOrEmpty(model.Password))
                 {
-                    user.PasswordHash = _passwordHasher.HashPassword(user, password);
+                    user.PasswordHash = _passwordHasher.HashPassword(user, model.Password);
                 }
                 IdentityResult result = await _userManager.UpdateAsync(user);
                 if (result.Succeeded)
@@ -108,6 +109,13 @@ namespace StartMeet.BLL.Users
             }
             else 
                 return new BadRequestObjectResult(new { message = "tralala2" });
+        }
+
+        public string GetLoggedUserId(ClaimsPrincipal user)
+        {
+            string userId = user.Claims.First(c => c.Type == "UserID").Value;
+            return userId;
+            
         }
     }
 }
