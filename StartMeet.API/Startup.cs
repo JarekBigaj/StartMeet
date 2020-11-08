@@ -41,7 +41,11 @@ namespace StartMeet.API
                 options.UseSqlServer(Configuration["Data:IdentityUserConnection:ConnectionString"]);
             });
 
-            services.AddIdentity<AppUser, IdentityRole>()
+            services.AddIdentity<AppUser, IdentityRole>(
+                options =>
+                {
+                    options.User.RequireUniqueEmail = true;
+                })
                 .AddEntityFrameworkStores<AppIdentityDbContext>()
                 .AddDefaultTokenProviders();
 

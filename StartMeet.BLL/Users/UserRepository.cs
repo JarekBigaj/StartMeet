@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using StartMeet.BLL.Users.Helpers;
 using StartMeet.Model.Users;
 using System;
 using System.Linq;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace StartMeet.BLL.Users
@@ -45,10 +43,14 @@ namespace StartMeet.BLL.Users
         {
             AppUser user = new AppUser
             {
-                UserName = model.FirstName,
+                FirstName = model.FirstName,
                 Email = model.Email,
-                SecondName = model.SecondName
+                SecondName = model.SecondName,
+                BirthDate = model.BirthDate,
+                UserGender = model.UserGender
             };
+
+            user.UserName = user.FirstName + user.SecondName + user.Id[^4..];
 
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             return result;
@@ -76,7 +78,7 @@ namespace StartMeet.BLL.Users
             var user = await _userManager.FindByIdAsync(userId);
             return new
             {
-                user.UserName,
+                user.FirstName,
                 user.SecondName,
                 user.Email
             };

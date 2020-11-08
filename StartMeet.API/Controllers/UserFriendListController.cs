@@ -1,10 +1,7 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.AspNetCore.Mvc;
 using StartMeet.BLL.Users;
 using StartMeet.Model.Users;
-using System;
-using System.Collections.Generic;
+
 
 namespace StartMeet.API.Controllers
 {

@@ -1,37 +1,24 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace StartMeet.Model.Users
 {
+    public enum Gender
+    {
+        Male,Female
+    }
     public class AppUser : IdentityUser
     {
-        public string SecondName { get; set; }
-    }
-
-    public class RegistrationModel
-    {
-        [Required]
         public string FirstName { get; set; }
-        [Required]
-        public string Email { get; set; }
-        [Required]
-        public string Password { get; set; }
-        [Required]
         public string SecondName { get; set; }
-
+        public string WorkPlace { get; set; }
+        public string University { get; set; }
+        public string HighSchool { get; set; } 
+        public string City { get; set; }
+        public string Website { get; set; }
+        public string SocialLink { get; set; }
+        public DateTime BirthDate { get; set; }
+        public Gender UserGender { get; set; }
     }
 
-    public class LoginModel
-    {
-        [Required]
-        public string Email { get; set; }
-        [Required]
-        public string Password { get; set; }
-    }
-
-    public class EditUserModel
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
 }

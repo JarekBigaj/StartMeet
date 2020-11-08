@@ -21,15 +21,26 @@
             Minimum 6 characters required.
         </label>
     <h6 class="text-secondary">Birthday</h6>
-        <div class="form-inline">
-            <select class="form-control"></select>
-            <select class="form-control"></select>
-            <select class="form-control"></select>
-        </div>
+    <mat-form-field appearance="fill">
+        <mat-label>Month</mat-label>
+        <select matNativeControl [(ngModel)]="SelectDateModel.selectedMonth" name="month">
+          <option value="" selected></option>
+          <option *ngFor="let month of SelectDateModel.months" [value]="month.value">
+            {{month.viewValue}}
+          </option>
+        </select>
+      </mat-form-field>
     <h6 class="text-secondary">Gender</h6>
-        <div class="form-inline">
-            <input type="radio" class="form-control"/>
+    <div class="form-inline">
+        <div class="form-check" >
+            <input type="radio" class="form-check-input" formControlName="UserGender" checked value=0>
+            <label class="form-check-label">Male</label>
         </div>
+        <div class="form-check">
+            <input type="radio" class="form-check-input" formControlName="UserGender" value=1>
+            <label class="form-check-label">Female</label>
+        </div>
+    </div>
     <button class="btn-success" type="submit" [disabled]="!service.formModel.valid">SignUp</button>
 </form>
 </div>
