@@ -15,6 +15,8 @@ export class UserAuthenticationService {
     FirstName : ['',Validators.required],
     SecondName : ['', Validators.required],
     Email : ['', Validators.email],
+    BirthDate: [''],
+    UserGender: 0,
     Password : ['',[Validators.required, Validators.minLength(6)]]
   });
 
@@ -23,7 +25,9 @@ export class UserAuthenticationService {
       FirstName : this.formModel.value.FirstName,
       SecondName: this.formModel.value.SecondName,
       Email: this.formModel.value.Email,
-      Password: this.formModel.value.Password
+      UserGender: parseInt(this.formModel.value.UserGender) ,
+      Password: this.formModel.value.Password,
+
     };
     return this.http.post(this.BaseURI+'/Home/Register',body);
   }

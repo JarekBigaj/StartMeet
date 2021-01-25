@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -16,9 +17,6 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { NavigationBarComponent } from './user-page/navigation-bar/navigation-bar.component';
 import { UserService } from './user-page/shared/user.service';
 import { AuthInterceptor } from "./auth/auth.interceptor";
-import { UserSettingsComponent } from './user-page/user-settings/user-settings.component';
-import { SettingsListComponent } from './user-page/user-settings/settings-list/settings-list.component';
-import { UserPropertiesListComponent } from './user-page/user-settings/user-properties-list/user-properties-list.component';
 
 @NgModule({
   declarations: [
@@ -28,10 +26,7 @@ import { UserPropertiesListComponent } from './user-page/user-settings/user-prop
     LoginComponent,
     DescriptionComponent,
     UserPageComponent,
-    NavigationBarComponent,
-    UserSettingsComponent,
-    SettingsListComponent,
-    UserPropertiesListComponent
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,

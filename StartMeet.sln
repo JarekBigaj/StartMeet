@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartMeet.API", "StartMeet.API\StartMeet.API.csproj", "{D6105AD9-F41B-484E-8232-CE64DDB4E810}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StartMeet.API", "StartMeet.API\StartMeet.API.csproj", "{D6105AD9-F41B-484E-8232-CE64DDB4E810}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartMeet.DAL", "StartMeet.DAL\StartMeet.DAL.csproj", "{5D2F41ED-CBB0-4370-A7A0-A18A71A6665F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StartMeet.DAL", "StartMeet.DAL\StartMeet.DAL.csproj", "{5D2F41ED-CBB0-4370-A7A0-A18A71A6665F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartMeet.BLL", "StartMeet.BLL\StartMeet.BLL.csproj", "{BBED9CC6-7829-4617-A95B-32D86FC2DED2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StartMeet.BLL", "StartMeet.BLL\StartMeet.BLL.csproj", "{BBED9CC6-7829-4617-A95B-32D86FC2DED2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartMeet.Model", "StartMeet.Model\StartMeet.Model.csproj", "{9C3AD30B-9EB0-43A7-94F7-4DE9298B492D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StartMeet.Model", "StartMeet.Model\StartMeet.Model.csproj", "{9C3AD30B-9EB0-43A7-94F7-4DE9298B492D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{8CDEB08C-F02D-4D26-8BF0-57C3E16B842B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{4CD47E89-DF67-42F0-A3A8-5D933F110CAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{5ECC1395-071E-4F27-BD3F-F8489E475E0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +42,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D6105AD9-F41B-484E-8232-CE64DDB4E810} = {8CDEB08C-F02D-4D26-8BF0-57C3E16B842B}
+		{5D2F41ED-CBB0-4370-A7A0-A18A71A6665F} = {5ECC1395-071E-4F27-BD3F-F8489E475E0D}
+		{BBED9CC6-7829-4617-A95B-32D86FC2DED2} = {4CD47E89-DF67-42F0-A3A8-5D933F110CAB}
+		{9C3AD30B-9EB0-43A7-94F7-4DE9298B492D} = {4CD47E89-DF67-42F0-A3A8-5D933F110CAB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87B7A9BC-130F-46C1-AD69-6C2D574E2FF4}

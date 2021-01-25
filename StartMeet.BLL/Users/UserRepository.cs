@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using StartMeet.BLL.Users.Helpers;
 using StartMeet.Model.Users;
 using System;
 using System.Linq;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace StartMeet.BLL.Users
@@ -45,10 +43,14 @@ namespace StartMeet.BLL.Users
         {
             AppUser user = new AppUser
             {
-                UserName = model.FirstName,
+                FirstName = model.FirstName,
                 Email = model.Email,
-                SecondName = model.SecondName
+                SecondName = model.SecondName,
+                BirthDate = model.BirthDate,
+                UserGender = model.UserGender
             };
+
+            user.UserName = user.FirstName + user.SecondName + user.Id[^4..];
 
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
             return result;
@@ -76,9 +78,10 @@ namespace StartMeet.BLL.Users
             var user = await _userManager.FindByIdAsync(userId);
             return new
             {
-                user.UserName,
+                user.FirstName,
                 user.SecondName,
                 user.Email
+
             };
         }
 
@@ -91,15 +94,15 @@ namespace StartMeet.BLL.Users
                 return new BadRequestObjectResult(new {message = "No User" });
         }
 
-        public async Task<Object> Edit(string id ,EditUserModel model)
+        public async Task<Object> Edit(string id ,string email,string password)
         {
             AppUser user = await _userManager.FindByIdAsync(id);
             if(user != null)
             {
-                user.Email = model.Email;
-                if(!string.IsNullOrEmpty(model.Password))
+                user.Email = email;
+                if(!string.IsNullOrEmpty(password))
                 {
-                    user.PasswordHash = _passwordHasher.HashPassword(user, model.Password);
+                    user.PasswordHash = _passwordHasher.HashPassword(user, password);
                 }
                 IdentityResult result = await _userManager.UpdateAsync(user);
                 if (result.Succeeded)
@@ -109,13 +112,6 @@ namespace StartMeet.BLL.Users
             }
             else 
                 return new BadRequestObjectResult(new { message = "tralala2" });
-        }
-
-        public string GetLoggedUserId(ClaimsPrincipal user)
-        {
-            string userId = user.Claims.First(c => c.Type == "UserID").Value;
-            return userId;
-            
         }
     }
 }
