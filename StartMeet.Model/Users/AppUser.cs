@@ -21,5 +21,8 @@ namespace StartMeet.Model.Users
         public Gender UserGender { get; set; }
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f072baa0165cdd69bc5b0347e29590b0fd184a0a
 }

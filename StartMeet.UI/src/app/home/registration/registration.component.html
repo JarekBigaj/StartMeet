@@ -21,6 +21,18 @@
             Minimum 6 characters required.
         </label>
     <h6 class="text-secondary">Birthday</h6>
+<<<<<<< HEAD
+=======
+    <mat-form-field appearance="fill">
+        <mat-label>Month</mat-label>
+        <select matNativeControl [(ngModel)]="SelectDateModel.selectedMonth" name="month">
+          <option value="" selected></option>
+          <option *ngFor="let month of SelectDateModel.months" [value]="month.value">
+            {{month.viewValue}}
+          </option>
+        </select>
+      </mat-form-field>
+>>>>>>> f072baa0165cdd69bc5b0347e29590b0fd184a0a
     <h6 class="text-secondary">Gender</h6>
     <div class="form-inline">
         <div class="form-check" >

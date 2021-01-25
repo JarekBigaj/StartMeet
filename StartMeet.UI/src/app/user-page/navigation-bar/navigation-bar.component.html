@@ -16,8 +16,13 @@
         </li>
     </ul>
     <ul class="navbar-nav column col-1">
+<<<<<<< HEAD
         <li class="nav-item">
             <a [routerLink]="['/UserPage/UserBoard']" class="nav-link">User</a>
+=======
+        <li class="nav-item" *ngIf="userDetails">
+            <a routerLink="/userpage" class="nav-link"> {{userDetails.firstName}} {{userDetails.secondName}}  </a>
+>>>>>>> f072baa0165cdd69bc5b0347e29590b0fd184a0a
         </li>
     </ul>
 
